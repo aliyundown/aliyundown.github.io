@@ -53,25 +53,38 @@
             font-size: 1.2rem;
         }
         /* 截图容器 */
-        .screenshot-container {
-            background: var(--light);
-            border-radius: 20px;
-            padding: 20px;
-            margin: 3rem 0;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
-        }
-        .screenshot {
-            height: 400px;
-            background: linear-gradient(145deg, 
-                rgba(0,200,83,0.1) 0%, 
-                rgba(38,50,56,1) 100%);
-            border-radius: 15px;
-            border: 2px solid rgba(0,200,83,0.2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary);
-        }
+       .screenshot-container {
+    background: var(--light);
+    border-radius: 20px;
+    padding: 20px;
+    margin: 3rem auto; /* 改为居中布局 */
+    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+    max-width: 1200px; /* 增加最大宽度限制 */
+    position: relative;
+    overflow: hidden;
+}
+      .screenshot {
+    background: linear-gradient(145deg, 
+        rgba(0,200,83,0.1) 0%, 
+        rgba(38,50,56,1) 100%);
+    border-radius: 15px;
+    border: 2px solid rgba(0,200,83,0.2);
+    position: relative;
+    padding: 10px; /* 增加内边距 */
+}
+        .preview-img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    display: block;
+    object-fit: contain; /* 保持图片完整比例 */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+}
+        .preview-img:hover {
+    transform: scale(1.02);
+}
+
         /* 功能模块 */
         .features-grid {
             display: grid;
@@ -141,6 +154,29 @@
             padding: 1.5rem;
             border-radius: 15px;
         }
+        @media (max-width: 768px) {
+    .screenshot-container {
+        margin: 2rem 1rem;
+        padding: 15px;
+    }
+    
+    .header-title h1 {
+        font-size: 2rem; /* 小屏幕标题调整 */
+    }
+    
+    .preview-img {
+        border-radius: 8px;
+    }
+}
+@keyframes border-glow {
+    0% { border-color: rgba(0,200,83,0.2); }
+    50% { border-color: rgba(0,200,83,0.5); }
+    100% { border-color: rgba(0,200,83,0.2); }
+}
+
+.screenshot {
+    animation: border-glow 3s infinite;
+}
     </style>
     <script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
 <script>LA.init({id:"3LZyCVUNC6pw30kh",ck:"3LZyCVUNC6pw30kh"})</script>
@@ -153,12 +189,11 @@
                 <p>全网极速 • 安全存储 • 全平台支持</p>
             </div>
 
-            <div class="screenshot-container">
-                <div class="screenshot">
-                     <img src="aliyun.png" class="preview-img" alt="阿里云盘软件界面" style="width:100%; border-radius: 15px;">
-                    [软件界面预览]
-                </div>
-            </div>
+       <div class="screenshot-container">
+    <div class="screenshot">
+        <img src="aliyun.png" class="preview-img" alt="阿里云盘破解版界面展示">
+    </div>
+</div>
 
             <div class="features-grid">
                 <!-- 核心功能 -->
